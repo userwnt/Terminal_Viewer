@@ -4,12 +4,14 @@ import struct
 import time
 import sys
 import zstandard as zstd
-from functools import lru_cache
+#from functools import lru_cache
+from cachetools import LFUCache,LRUCache,cached
 
 
 _char = "▄"
-pixel_cache_size = 8192
-frame_cache_size = 2048
+pixel_cache = LFUCache(8192)
+frame_cache = LRUCache(2048)
+version = "v0.0.2"
 
 
 def myprint(text:str):
@@ -17,7 +19,8 @@ def myprint(text:str):
     sys.stdout.flush()
 
 
-@lru_cache(maxsize=pixel_cache_size)
+#@lru_cache(maxsize=pixel_cache_size)
+@cached(pixel_cache)
 def transform(ur:int,ug:int,ub:int,lr:int,lg:int,lb:int,char:str = _char) -> str:
     return "\033[38;2;{0};{1};{2};48;2;{3};{4};{5}m{6}".format(lr,lg,lb,ur,ug,ub,char)
 
@@ -51,7 +54,8 @@ def load(path:str) -> tuple[tuple[tuple[int,int,int,int,int,int]]] | tuple[tuple
         raise e
 
 
-@lru_cache(maxsize=frame_cache_size)
+#@lru_cache(maxsize=frame_cache_size)
+@cached(frame_cache)
 def parse(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char) -> str:
     code = ''
     try:
