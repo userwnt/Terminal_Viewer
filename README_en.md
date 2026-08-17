@@ -3,8 +3,6 @@
 
 Terminal Viewer is a Python module for displaying images in a specific format in the terminal.
 
-> The current version `v0.0.1` is no longer the latest
-
 ## How does it work?
 
 Terminal Viewer uses ANSI escape sequences to set both the foreground color and background color of the single character `▄` (lower half block) at the same time in the terminal. This creates the effect of a single character displaying two independent pixels. By assigning different foreground and background colors to `▄` and combining them, a complete image can be formed.
