@@ -28,6 +28,23 @@ play_video(load("your_video.vid"))  # Load and play; the format must be a video,
 # You can also specify the frame rate: play_video(load("your_video.vid"), fps=60)
 ```
 
+- Parse first, then play
+
+```python
+from tv import *  # Import functions
+data = parse_frames(load("your_video.vid"))  # Load and parse; the format must be a video, otherwise an error will be raised
+play_parsed_video(data)
+# You can also specify the frame rate: play_parsed_video(data, fps=60)
+```
+
+- Parse first, then view
+
+```python
+from tv import *  # Import functions
+data = parse(load("your_photo.pic"))  # Load and parse; the format must be an image, otherwise an error will be raised
+show_parsed_photo(data)
+```
+
 ## Functions
 
 | Function Name | Parameters | Description | Return Type |
@@ -39,6 +56,9 @@ play_video(load("your_video.vid"))  # Load and play; the format must be a video,
 |**save**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**, path:**str**, level:**int** = **3**|Serializes `lst` and saves it to `path` after compression at level `level`.|**NoneType**|
 |**load**|path:**str**|Opens the file at `path`, validates it, and if validation succeeds, returns the deserialized decompressed data; otherwise raises an error. (Do not load data from untrusted sources.)|**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**|
 |**myprint**|text:**str**|Writes `text` to the buffer and flushes immediately.|**NoneType**|
+|**show_parsed_photo**|data:**str**, char:**str** = **_char**|Same as `show_photo`, but accepts already parsed data.|**NoneType**|
+|**play_parsed_video**|lst:**tuple[str]**, char:**str** = **_char**, fps:**int** = **30**|Same as `play_video`, but accepts already parsed data.|**NoneType**|
+|**parse_frames**|lst:**tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**, char:**str** = **_char**|Converts a video tuple into a tuple of strings for use with `play_parsed_video`.|**tuple[str]**|
 
 ## Where do the image data come from?
 

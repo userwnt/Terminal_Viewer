@@ -21,12 +21,30 @@ pip install -r requirements.txt
 from tv import * #导入函数
 show_photo(load("your_photo.pic")) #加载并查看，格式必须是图片，否则会报错
 ```
+
 - 播放视频
 
 ```python
 from tv import * #导入函数
 play_video(load("your_video.vid")) #加载并播放，格式必须是视频，否则会报错
 #也可以指定帧率： play_video(load("your_video.vid")，fps=60)
+```
+
+- 先解析再播放
+
+```python
+from tv import * #导入函数
+data = parse_frames(load("your_video.vid")) #加载并解析，格式必须是视频，否则会报错
+play_parsed_video(data)
+#也可以指定帧率： play_parsed_video(data，fps=60)
+```
+
+- 先解析再查看
+
+```python
+from tv import * #导入函数
+data = parse(load("your_photo.pic")) #加载并解析，格式必须是图片，否则会报错
+show_parsed_photo(data)
 ```
 
 ## 函数
@@ -40,6 +58,9 @@ play_video(load("your_video.vid")) #加载并播放，格式必须是视频，�
 |**save**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**,path:**str**,level:**int** = **3**|将`lst`序列化并`level`级压缩后保存到`path`|**NoneType**|
 |**load**|path:**str**|从`path`打开文件后校验，如果校验成功，返回反序列化后的解压数据，否则报错(不要加载不可信来源的数据)|**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**|
 |**myprint**|text:**str**|将`text`写入缓冲区后立即刷新|**NoneType**|
+|**show_parsed_photo**|data:**str**,char:**str** = **_char**|同`show_photo`,但接收已经解析的数据|**NoneType**|
+|**play_parsed_video**|lst:**tuple[str]**,char:**str** = **_char**,fps:**int** = **30**|同`play_video`,但接收已经解析的数据|**NoneType**|
+|**parse_frames**|lst:**tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**,char:**str** = **_char**|将视频元组转换成字符串元组，供`play_parsed_video`函数使用|**tuple[str]**|
 
 ## 图像数据从哪里来？
 
