@@ -67,10 +67,18 @@ def parse(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char) -> 
     except Exception as e:
         raise ValueError(f"Invalid data, Err:{e}")
 
+def parse_frames(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str = _char) -> tuple[str]:
+    codes = []
+    try:
+        for i in lst:
+            codes.append(parse(i,char))
+        return tuple(codes)
+    except Exception as e:
+        raise e
 
 def play_video(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str = _char,fps:int = 30):
+    s_time = 1 / fps
     try:
-        s_time = 1 / fps
         myprint('\033[?1049h\033[?25l')
         for i in lst:
             myprint(parse(i,char))
@@ -84,9 +92,30 @@ def play_video(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str 
     finally:
         myprint('\033[?1049l\033[?25h')
 
+def play_parsed_video(lst:tuple[str],char:str = _char,fps:int = 30):
+    s_time = 1 / fps
+    try:
+        myprint('\033[?1049h\033[?25l')
+        for i in lst:
+            myprint(i)
+            time.sleep(s_time)
+            myprint("\033[H")
+        myprint('\033[?1049l\033[?25h')
+    except KeyboardInterrupt:
+        return
+    except Exception as e:
+        raise e
+    finally:
+        myprint('\033[?1049l\033[?25h')
 
 def show_photo(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char):
     try:
         myprint(parse(lst,char))
+    except Exception as e:
+        raise e
+
+def show_parsed_photo(data:str,char:str = _char):
+    try:
+        myprint(data)
     except Exception as e:
         raise e
