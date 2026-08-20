@@ -25,7 +25,7 @@ show_photo(load("your_photo.pic"))  # Load and view; the format must be an image
 ```python
 from tv import *  # Import functions
 play_video(load("your_video.vid"))  # Load and play; the format must be a video, otherwise an error will be raised
-# You can also specify the frame rate: play_video(load("your_video.vid"), fps=60)
+# You can also specify the frame rate: play_video(load("your_video.vid"),fps=60)
 ```
 
 - Parse first, then play
@@ -34,7 +34,7 @@ play_video(load("your_video.vid"))  # Load and play; the format must be a video,
 from tv import *  # Import functions
 data = parse_frames(load("your_video.vid"))  # Load and parse; the format must be a video, otherwise an error will be raised
 play_parsed_video(data)
-# You can also specify the frame rate: play_parsed_video(data, fps=60)
+# You can also specify the frame rate: play_parsed_video(data,fps=60)
 ```
 
 - Parse first, then view

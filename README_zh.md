@@ -27,7 +27,7 @@ show_photo(load("your_photo.pic")) #加载并查看，格式必须是图片，�
 ```python
 from tv import * #导入函数
 play_video(load("your_video.vid")) #加载并播放，格式必须是视频，否则会报错
-#也可以指定帧率： play_video(load("your_video.vid")，fps=60)
+#也可以指定帧率： play_video(load("your_video.vid"),fps=60)
 ```
 
 - 先解析再播放
@@ -36,7 +36,7 @@ play_video(load("your_video.vid")) #加载并播放，格式必须是视频，�
 from tv import * #导入函数
 data = parse_frames(load("your_video.vid")) #加载并解析，格式必须是视频，否则会报错
 play_parsed_video(data)
-#也可以指定帧率： play_parsed_video(data，fps=60)
+#也可以指定帧率： play_parsed_video(data,fps=60)
 ```
 
 - 先解析再查看
