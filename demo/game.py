@@ -5,6 +5,7 @@ import time
 import random
 import shutil
 
+sys.path.append("./../")
 import tv
 
 # --------------------- 参数设置 ---------------------
