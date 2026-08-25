@@ -23,3 +23,5 @@
 
 - Added a copyright notice
 - Updated the type annotations for `save` and `load`.
+- Addressed [issue #1](https://github.com/userwnt/Terminal_Viewer/issues/1) raised by `gurew23`.
+- Removed the duplicate `tv.py` under `demo`.
