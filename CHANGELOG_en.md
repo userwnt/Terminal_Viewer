@@ -17,4 +17,9 @@
 
 > August 21, 2026 12:13:40
 
-- Added a `demo` folder containing a game that uses [`tv.py`](tv.py).
+- Added a `demo` folder containing a game that uses [`tv.py`](tv.py)
+
+> August 25, 2026 11:29:10
+
+- Added a copyright notice
+- Updated the type annotations for `save` and `load`.
