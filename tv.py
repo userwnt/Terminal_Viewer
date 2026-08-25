@@ -4,15 +4,31 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 
+# Issue #1,Proposed by gurew23
+
+
 import pickle
 import hashlib
 import struct
 import time
 import sys
 import zstandard as zstd
+import ctypes
 #from functools import lru_cache
 from cachetools import LFUCache,LRUCache,cached
 from typing import Any
+
+
+# Issue #1, Proposed by gurew23
+if sys.platform == "win32":
+    if (sys.getwindowsversion().major >= 10 and sys.getwindowsversion().build >= 10586):
+        h = ctypes.windll.kernel32.GetStdHandle(-11)
+        m = ctypes.c_uint()
+        ctypes.windll.kernel32.GetConsoleMode(h,ctypes.byref(m))
+        if (m.value & 0x0004) == 0:
+            print("\033[38;2;0;0;0;48;2;255;204;0mWarning\033[0m: the terminal no enable Visual Terminal, cannot load. Please enable Visual Terminal before use.")
+    else:
+        print("\033[38;2;0;0;0;48;2;255;204;0mWarning\033[0m: Your system does not support this module. Please upgrade your system to Windows 10 1511 or later to use this module.")
 
 
 _char = "▄"
