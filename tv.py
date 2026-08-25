@@ -4,9 +4,6 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 
-# Issue #1,Proposed by gurew23
-
-
 import pickle
 import hashlib
 import struct
