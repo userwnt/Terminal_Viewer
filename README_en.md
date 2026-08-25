@@ -3,6 +3,8 @@
 
 Terminal Viewer is a Python module for displaying images in a specific format in the terminal.
 
+> Warning: This module requires Windows 10 version 1511 or later, with the `Virtual Terminal` feature enabled.
+
 ## How does it work?
 
 Terminal Viewer uses ANSI escape sequences to set both the foreground color and background color of the single character `▄` (lower half block) at the same time in the terminal. This creates the effect of a single character displaying two independent pixels. By assigning different foreground and background colors to `▄` and combining them, a complete image can be formed.
@@ -62,7 +64,7 @@ show_parsed_photo(data)
 
 ## Where do the image data come from?
 
-- You can feed [`tv.py`](tv.py) and [`prompt_zh.md`](prompt_zh.md) to an AI and describe the image or video you want to generate, for example:
+- You can feed [`tv.py`](tv.py) and [`prompt_en.md`](prompt_en.md) to an AI and describe the image or video you want to generate, for example:
 
 ```text
 Generate a picture of the sun rising over a hill, save the file to the current directory automatically, do not preview it, use the .pic suffix, 512x512 pixels
