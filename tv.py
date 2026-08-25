@@ -1,3 +1,9 @@
+# tv.py
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+
 import pickle
 import hashlib
 import struct
@@ -6,6 +12,7 @@ import sys
 import zstandard as zstd
 #from functools import lru_cache
 from cachetools import LFUCache,LRUCache,cached
+from typing import Any
 
 
 _char = "▄"
@@ -25,7 +32,7 @@ def transform(ur:int,ug:int,ub:int,lr:int,lg:int,lb:int,char:str = _char) -> str
     return "\033[38;2;{0};{1};{2};48;2;{3};{4};{5}m{6}".format(lr,lg,lb,ur,ug,ub,char)
 
 
-def save(lst:tuple[tuple[tuple[int,int,int,int,int,int]]] | tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],path:str,level:int = 3):
+def save(lst:tuple[tuple[tuple[int,int,int,int,int,int]]] | tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]] | Any,path:str,level:int = 3):
     byte = zstd.compress(pickle.dumps(lst,5),level)
     len_byte = struct.pack("<I",len(byte))
     hash_byte = hashlib.sha512(len_byte + byte).digest()
@@ -36,7 +43,7 @@ def save(lst:tuple[tuple[tuple[int,int,int,int,int,int]]] | tuple[tuple[tuple[tu
         raise ValueError(f"Err:{e}")
 
 
-def load(path:str) -> tuple[tuple[tuple[int,int,int,int,int,int]]] | tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]:
+def load(path:str) -> tuple[tuple[tuple[int,int,int,int,int,int]]] | tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]] | Any:
     try:
         with open(path,'rb') as f:
             head = f.read(4)
