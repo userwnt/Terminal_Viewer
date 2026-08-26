@@ -28,4 +28,9 @@
 
 > August 26, 2026 8:53:45
 
-- Fixed the type annotations in [`README`](README_zh.md).
+- Fixed the type annotations in [`README`](README_en.md).
+
+> August 26, 2026 12:45:50
+
+- Removed frame caching.
+- Increased the pixel-level cache capacity.
