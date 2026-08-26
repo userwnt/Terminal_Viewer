@@ -57,8 +57,8 @@ show_parsed_photo(data)
 |**parse**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]**, char:**str** = **_char**|`lst`对应**单帧**图像，返回一张处理好的图像(字符串组成，直接输出就能看到)|**str**|
 |**play_video**|lst:**tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**, char:**str** = **_char**, fps:**int** = **30**|`lst`对应**多帧图像**，`fps`是帧率，默认30fps，无返回|**NoneType**|
 |**show_photo**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]**, char:**str** = **_char**|同`parse`函数|**NoneType**|
-|**save**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**,path:**str**,level:**int** = **3**|将`lst`序列化并`level`级压缩后保存到`path`|**NoneType**|
-|**load**|path:**str**|从`path`打开文件后校验，如果校验成功，返回反序列化后的解压数据，否则报错(不要加载不可信来源的数据)|**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**|
+|**save**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]** \| **Any**,path:**str**,level:**int** = **3**|将`lst`序列化并`level`级压缩后保存到`path`|**NoneType**|
+|**load**|path:**str**|从`path`打开文件后校验，如果校验成功，返回反序列化后的解压数据，否则报错(不要加载不可信来源的数据)|**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]** \| **Any**|
 |**myprint**|text:**str**|将`text`写入缓冲区后立即刷新|**NoneType**|
 |**show_parsed_photo**|data:**str**,char:**str** = **_char**|同`show_photo`,但接收已经解析的数据|**NoneType**|
 |**play_parsed_video**|lst:**tuple[str]**,char:**str** = **_char**,fps:**int** = **30**|同`play_video`,但接收已经解析的数据|**NoneType**|

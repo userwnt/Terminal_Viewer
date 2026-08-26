@@ -55,8 +55,8 @@ show_parsed_photo(data)
 |**parse**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]**, char:**str** = **_char**|`lst` corresponds to a single-frame image and returns a processed image (a string-based image that can be displayed directly).|**str**|
 |**play_video**|lst:**tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**, char:**str** = **_char**, fps:**int** = **30**|`lst` corresponds to a multi-frame image, and `fps` is the frame rate. Default is 30 fps. No return value.|**NoneType**|
 |**show_photo**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]**, char:**str** = **_char**|Same as the `parse` function.|**NoneType**|
-|**save**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**, path:**str**, level:**int** = **3**|Serializes `lst` and saves it to `path` after compression at level `level`.|**NoneType**|
-|**load**|path:**str**|Opens the file at `path`, validates it, and if validation succeeds, returns the deserialized decompressed data; otherwise raises an error. (Do not load data from untrusted sources.)|**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]**|
+|**save**|lst:**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]** \| **Any**, path:**str**, level:**int** = **3**|Serializes `lst` and saves it to `path` after compression at level `level`.|**NoneType**|
+|**load**|path:**str**|Opens the file at `path`, validates it, and if validation succeeds, returns the deserialized decompressed data; otherwise raises an error. (Do not load data from untrusted sources.)|**tuple[tuple[tuple[int,int,int,int,int,int]]]** \| **tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]]** \| **Any**|
 |**myprint**|text:**str**|Writes `text` to the buffer and flushes immediately.|**NoneType**|
 |**show_parsed_photo**|data:**str**, char:**str** = **_char**|Same as `show_photo`, but accepts already parsed data.|**NoneType**|
 |**play_parsed_video**|lst:**tuple[str]**, char:**str** = **_char**, fps:**int** = **30**|Same as `play_video`, but accepts already parsed data.|**NoneType**|
