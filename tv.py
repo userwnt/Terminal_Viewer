@@ -12,7 +12,7 @@ import sys
 import zstandard as zstd
 import ctypes
 #from functools import lru_cache
-from cachetools import LFUCache,LRUCache,cached
+from cachetools import LFUCache,cached
 from typing import Any
 
 
@@ -29,8 +29,8 @@ if sys.platform == "win32":
 
 
 _char = "▄"
-pixel_cache = LFUCache(8192)
-frame_cache = LRUCache(2048)
+pixel_cache = LFUCache(16384)
+#frame_cache = LRUCache(2048)
 version = "v0.0.2"
 
 
@@ -75,7 +75,7 @@ def load(path:str) -> tuple[tuple[tuple[int,int,int,int,int,int]]] | tuple[tuple
 
 
 #@lru_cache(maxsize=frame_cache_size)
-@cached(frame_cache)
+#@cached(frame_cache)
 def parse(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char) -> str:
     code = ''
     try:
