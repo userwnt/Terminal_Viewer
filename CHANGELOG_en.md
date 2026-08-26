@@ -25,3 +25,7 @@
 - Updated the type annotations for `save` and `load`.
 - Addressed [issue #1](https://github.com/userwnt/Terminal_Viewer/issues/1) raised by `gurew23`.
 - Removed the duplicate `tv.py` under `demo`.
+
+> August 26, 2026 8:53:45
+
+- Fixed the type annotations in [`README`](README_zh.md).

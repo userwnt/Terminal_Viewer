@@ -25,3 +25,7 @@
 - 修改`save`和`load`的类型注解
 - 采纳了由`gurew23`提出的[Issue](https://github.com/userwnt/Terminal_Viewer/issues/1) #1
 - 移除了`demo`下重复的`tv.py`
+
+> 2026年8月26日 8:53:45
+
+- 修正[`README`](README_zh.md)中的类型注解
