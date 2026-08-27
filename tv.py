@@ -87,6 +87,7 @@ def parse(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char) -> 
     except Exception as e:
         raise ValueError(f"Invalid data, Err:{e}")
 
+
 def parse_frames(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str = _char) -> tuple[str]:
     codes = []
     try:
@@ -96,14 +97,21 @@ def parse_frames(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:st
     except Exception as e:
         raise e
 
+
 def play_video(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str = _char,fps:int = 30):
     s_time = 1 / fps
     try:
         myprint('\033[?1049h\033[?25l')
         for i in lst:
+            start = time.perf_counter()
             myprint(parse(i,char))
-            time.sleep(s_time)
             myprint("\033[H")
+            end = time.perf_counter()
+            sleep_time = s_time - (end - start)
+            if sleep_time > 0:
+                time.sleep(sleep_time)
+            else:
+                pass
         myprint('\033[?1049l\033[?25h')
     except KeyboardInterrupt:
         return
@@ -111,15 +119,22 @@ def play_video(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str 
         raise e
     finally:
         myprint('\033[?1049l\033[?25h')
+
 
 def play_parsed_video(lst:tuple[str],char:str = _char,fps:int = 30):
     s_time = 1 / fps
     try:
         myprint('\033[?1049h\033[?25l')
         for i in lst:
+            start = time.perf_counter()
             myprint(i)
-            time.sleep(s_time)
             myprint("\033[H")
+            end = time.perf_counter()
+            sleep_time = s_time - (end - start)
+            if sleep_time > 0:
+                time.sleep(sleep_time)
+            else:
+                pass
         myprint('\033[?1049l\033[?25h')
     except KeyboardInterrupt:
         return
@@ -128,11 +143,13 @@ def play_parsed_video(lst:tuple[str],char:str = _char,fps:int = 30):
     finally:
         myprint('\033[?1049l\033[?25h')
 
+
 def show_photo(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char):
     try:
         myprint(parse(lst,char))
     except Exception as e:
         raise e
+
 
 def show_parsed_photo(data:str,char:str = _char):
     try:
