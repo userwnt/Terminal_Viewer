@@ -23,9 +23,9 @@ if sys.platform == "win32":
         m = ctypes.c_uint()
         ctypes.windll.kernel32.GetConsoleMode(h,ctypes.byref(m))
         if (m.value & 0x0004) == 0:
-            print("\033[38;2;0;0;0;48;2;255;204;0mWarning\033[0m: the terminal no enable Visual Terminal, cannot load. Please enable Visual Terminal before use.")
+            print("Warning: the terminal no enable Visual Terminal, cannot load. Please enable Visual Terminal before use.")
     else:
-        print("\033[38;2;0;0;0;48;2;255;204;0mWarning\033[0m: Your system does not support this module. Please upgrade your system to Windows 10 1511 or later to use this module.")
+        print("Warning: Your system does not support this module. Please upgrade your system to Windows 10 1511 or later to use this module.")
 
 
 _char = "▄"
