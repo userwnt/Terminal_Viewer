@@ -34,3 +34,8 @@
 
 - Removed frame caching.
 - Increased the pixel-level cache capacity.
+
+> August 27, 2026 13:57:49
+
+- Added an extremely inadequate sleep-time compensation mechanism, with impressively moving results. 😭
+- Replaced the demo with a new one.
