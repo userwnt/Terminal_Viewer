@@ -3,7 +3,8 @@
 
 Terminal Viewer 是一个Python模块，用于在终端显示特定格式的图像
 
-> Wanning: 此模块需要在Windows10 1511版本及以上运行，并且需要启用`Virtual Terminal`功能
+> **Warning**
+>> 此模块需要在Windows10 1511版本及以上运行，并且需要启用`Virtual Terminal`功能
 
 ## 怎样工作的？
 

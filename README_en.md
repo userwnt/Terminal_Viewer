@@ -3,7 +3,8 @@
 
 Terminal Viewer is a Python module for displaying images in a specific format in the terminal.
 
-> Warning: This module requires Windows 10 version 1511 or later, with the `Virtual Terminal` feature enabled.
+> **Warning**
+>> This module requires Windows 10 version 1511 or later, with the `Virtual Terminal` feature enabled.
 
 ## How does it work?
 
