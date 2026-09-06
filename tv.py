@@ -23,9 +23,11 @@ if sys.platform == "win32":
         m = ctypes.c_uint()
         ctypes.windll.kernel32.GetConsoleMode(h,ctypes.byref(m))
         if (m.value & 0x0004) == 0:
-            print("Warning: the terminal no enable Visual Terminal, cannot load. Please enable Visual Terminal before use.")
+            print("Warning: the terminal no enable Visual Terminal, Please enable Visual Terminal before use.")
+            exit(1)
     else:
         print("Warning: Your system does not support this module. Please upgrade your system to Windows 10 1511 or later to use this module.")
+        exit(1)
 
 
 _char = "▄"
@@ -76,13 +78,13 @@ def load(path:str) -> tuple[tuple[tuple[int,int,int,int,int,int]]] | tuple[tuple
 
 #@lru_cache(maxsize=frame_cache_size)
 #@cached(frame_cache)
-def parse(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char) -> str:
+def parse(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char,sep:str = "\033[0m\n") -> str:
     code = ''
     try:
         for i in lst:
             for l in i:
                 code += transform(*l,char)
-            code += "\033[0m\n"
+            code += sep
         return code.removesuffix("\n")
     except Exception as e:
         raise ValueError(f"Invalid data, Err:{e}")
@@ -98,10 +100,13 @@ def parse_frames(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:st
         raise e
 
 
-def play_video(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str = _char,fps:int = 30):
+def play_video(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str = _char,fps:int = 30,cls:bool = True):
     s_time = 1 / fps
     try:
-        myprint('\033[?1049h\033[?25l')
+        if cls:
+            myprint('\033[?1049h\033[?25l')
+        else:
+            myprint('\033[?25l')
         for i in lst:
             start = time.perf_counter()
             myprint(parse(i,char))
@@ -112,19 +117,28 @@ def play_video(lst:tuple[tuple[tuple[tuple[int,int,int,int,int,int]]]],char:str 
                 time.sleep(sleep_time)
             else:
                 pass
-        myprint('\033[?1049l\033[?25h')
+        if cls:
+            myprint('\033[?1049l\033[?25h')
+        else:
+            myprint('\033[?25h')
     except KeyboardInterrupt:
         return
     except Exception as e:
         raise e
     finally:
-        myprint('\033[?1049l\033[?25h')
+        if cls:
+            myprint('\033[?1049l\033[?25h')
+        else:
+            myprint('\033[?25h')
 
 
-def play_parsed_video(lst:tuple[str],char:str = _char,fps:int = 30):
+def play_parsed_video(lst:tuple[str],char:str = _char,fps:int = 30,cls:bool = True):
     s_time = 1 / fps
     try:
-        myprint('\033[?1049h\033[?25l')
+        if cls:
+            myprint('\033[?1049h\033[?25l')
+        else:
+            myprint('\033[?25l')
         for i in lst:
             start = time.perf_counter()
             myprint(i)
@@ -135,13 +149,19 @@ def play_parsed_video(lst:tuple[str],char:str = _char,fps:int = 30):
                 time.sleep(sleep_time)
             else:
                 pass
-        myprint('\033[?1049l\033[?25h')
+        if cls:
+            myprint('\033[?1049l\033[?25h')
+        else:
+            myprint('\033[?25h')
     except KeyboardInterrupt:
         return
     except Exception as e:
         raise e
     finally:
-        myprint('\033[?1049l\033[?25h')
+        if cls:
+            myprint('\033[?1049l\033[?25h')
+        else:
+            myprint('\033[?25h')
 
 
 def show_photo(lst:tuple[tuple[tuple[int,int,int,int,int,int]]],char:str = _char):
