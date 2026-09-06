@@ -39,3 +39,7 @@
 
 - Added an extremely inadequate sleep-time compensation mechanism, with impressively moving results. 😭
 - Replaced the demo with a new one.
+
+> September 6, 2026 9:47:49
+
+- Modified the project structure.

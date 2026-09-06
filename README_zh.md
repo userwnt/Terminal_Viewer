@@ -67,7 +67,7 @@ show_parsed_photo(data)
 
 ## 图像数据从哪里来？
 
-- 你可以将[`tv.py`](tv.py)和[`prompt_zh.md`](prompt_zh.md)喂给ai并描述你想要生成的图片/视频，例如：
+- 你可以将[`tv.py`](tv.py)和[`prompt_zh.md`](prompts/prompt_zh.md)喂给ai并描述你想要生成的图片/视频，例如：
 
 ```text
 生成一个太阳从山坡上升起的图片，自动保存文件到当前目录，不预览，后缀名.pic,512*512像素
